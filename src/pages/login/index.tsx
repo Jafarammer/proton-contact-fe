@@ -31,7 +31,12 @@ const Login = () => {
             rules={[{ required: true, message: "Please input your email!" }]}
             required={false}
           >
-            <Input size="large" type="email" prefix={<IoMail size={20} />} />
+            <Input
+              size="large"
+              type="email"
+              name="email"
+              prefix={<IoMail size={20} />}
+            />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -40,18 +45,32 @@ const Login = () => {
             rules={[{ required: true, message: "Please input your password!" }]}
             required={false}
           >
-            <Input.Password size="large" prefix={<FaLock size={20} />} />
+            <Input.Password
+              name="password"
+              size="large"
+              prefix={<FaLock size={20} />}
+            />
           </Form.Item>
 
           <Link to="/forgot-password" className="link">
             Forgot Password?
           </Link>
 
-          <Button htmlType="submit" block type="primary" size="large">
-            Sign In to Dashboard <FaArrowRightToBracket />
+          <Button
+            htmlType="submit"
+            block
+            type="primary"
+            size="large"
+            icon={<FaArrowRightToBracket aria-label="icon-arrow" />}
+            iconPosition="end"
+          >
+            Sign In to Dashboard
           </Button>
         </Form>
       </Card>
+      <Text type="secondary">
+        New to Proton Contact ? <Link to={"/register"}>Create an account</Link>
+      </Text>
     </div>
   );
 };
