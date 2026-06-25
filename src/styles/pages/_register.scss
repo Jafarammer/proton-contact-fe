@@ -1,0 +1,26 @@
+.register-container {
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  .title {
+    margin-top: 16px !important;
+    margin-bottom: 0 !important;
+    text-align: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  .form {
+    margin-top: 12px;
+  }
+}
