@@ -83,4 +83,14 @@ describe("RENDER", () => {
 
     expect(button).toBeInTheDocument();
   });
+
+  it("should render log in link", () => {
+    renderWithRouter(<Register />);
+
+    const link = screen.getByRole("link", {
+      name: /Log in/i,
+    });
+
+    expect(link).toHaveAttribute("href", "/");
+  });
 });
