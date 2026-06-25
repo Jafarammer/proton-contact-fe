@@ -41,4 +41,36 @@ describe("RENDER", () => {
     expect(screen.getByText(descForm)).toBeInTheDocument();
     expect(screen.getByText(textLink)).toBeInTheDocument();
   });
+
+  it("should render full name input", () => {
+    renderWithRouter(<Register />);
+    const fullNameInput = screen.getByLabelText("Full Name");
+    expect(fullNameInput).toBeInTheDocument();
+    expect(fullNameInput).toHaveAttribute("name", "fullName");
+    expect(fullNameInput).toHaveAttribute("type", "text");
+  });
+
+  it("should render email input", () => {
+    renderWithRouter(<Register />);
+    const emailInput = screen.getByLabelText("Email Address");
+    expect(emailInput).toBeInTheDocument();
+    expect(emailInput).toHaveAttribute("name", "email");
+    expect(emailInput).toHaveAttribute("type", "email");
+  });
+
+  it("should render password input", () => {
+    renderWithRouter(<Register />);
+    const passwordInput = screen.getByLabelText("Password");
+    expect(passwordInput).toBeInTheDocument();
+    expect(passwordInput).toHaveAttribute("name", "password");
+    expect(passwordInput).toHaveAttribute("type", "password");
+  });
+
+  it("should render confirm password input", () => {
+    renderWithRouter(<Register />);
+    const confirmPasswordInput = screen.getByLabelText("Confirm Password");
+    expect(confirmPasswordInput).toBeInTheDocument();
+    expect(confirmPasswordInput).toHaveAttribute("name", "confirmPassword");
+    expect(confirmPasswordInput).toHaveAttribute("type", "password");
+  });
 });
