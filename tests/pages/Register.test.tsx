@@ -73,4 +73,14 @@ describe("RENDER", () => {
     expect(confirmPasswordInput).toHaveAttribute("name", "confirmPassword");
     expect(confirmPasswordInput).toHaveAttribute("type", "password");
   });
+
+  it("should render register button", () => {
+    renderWithRouter(<Register />);
+
+    const button = screen.getByRole("button", {
+      name: /register/i,
+    });
+
+    expect(button).toBeInTheDocument();
+  });
 });
