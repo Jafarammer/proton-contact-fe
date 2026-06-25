@@ -63,27 +63,7 @@ describe("RENDER", () => {
     expect(button).toBeInTheDocument();
     expect(screen.getByLabelText("icon-arrow")).toBeInTheDocument();
   });
-});
 
-describe("USER EVENT", () => {
-  it("should show password when eye icon is clicked", async () => {
-    renderWithRouter(<Login />);
-
-    const passwordInput = screen.getByLabelText(/password/i);
-
-    await userEvent.type(passwordInput, "Secret123");
-
-    expect(passwordInput).toHaveAttribute("type", "password");
-
-    const eyeIcon = screen.getByLabelText("eye-invisible");
-
-    await userEvent.click(eyeIcon);
-
-    expect(passwordInput).toHaveAttribute("type", "text");
-  });
-});
-
-describe("ROUTER", () => {
   it("should render forgot password link", () => {
     renderWithRouter(<Login />);
 
@@ -102,5 +82,23 @@ describe("ROUTER", () => {
     });
 
     expect(registerLink).toHaveAttribute("href", "/register");
+  });
+});
+
+describe("USER EVENT", () => {
+  it("should show password when eye icon is clicked", async () => {
+    renderWithRouter(<Login />);
+
+    const passwordInput = screen.getByLabelText(/password/i);
+
+    await userEvent.type(passwordInput, "Secret123");
+
+    expect(passwordInput).toHaveAttribute("type", "password");
+
+    const eyeIcon = screen.getByLabelText("eye-invisible");
+
+    await userEvent.click(eyeIcon);
+
+    expect(passwordInput).toHaveAttribute("type", "text");
   });
 });
