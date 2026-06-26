@@ -94,3 +94,31 @@ describe("RENDER", () => {
     expect(link).toHaveAttribute("href", "/");
   });
 });
+
+describe("USER EVENT", () => {
+  it("should show password when eye icon is clicked", async () => {
+    renderWithRouter(<Register />);
+
+    const password = screen.getByLabelText("Password");
+    expect(password).toHaveAttribute("type", "password");
+
+    const eyeIcon = screen.getAllByLabelText("eye-invisible");
+
+    await userEvent.click(eyeIcon[0]);
+
+    expect(password).toHaveAttribute("type", "text");
+  });
+
+  it("should show confirm password when eye icon is clicked", async () => {
+    renderWithRouter(<Register />);
+
+    const confirmPassword = screen.getByLabelText("Confirm Password");
+    expect(confirmPassword).toHaveAttribute("type", "password");
+
+    const eyeIcon = screen.getAllByLabelText("eye-invisible");
+
+    await userEvent.click(eyeIcon[1]);
+
+    expect(confirmPassword).toHaveAttribute("type", "text");
+  });
+});
