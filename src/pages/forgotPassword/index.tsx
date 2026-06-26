@@ -58,7 +58,7 @@ const ForgotPassword = () => {
               block
               type="primary"
               size="large"
-              icon={<IoSend size={16} />}
+              icon={<IoSend size={16} aria-label="icon-send" />}
               iconPosition="end"
             >
               Send Intructions

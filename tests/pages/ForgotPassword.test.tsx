@@ -46,4 +46,15 @@ describe("RENDER", () => {
     expect(emailInput).toHaveAttribute("name", "email");
     expect(emailInput).toHaveAttribute("type", "email");
   });
+
+  it("should render send Intructions button", () => {
+    renderWithRouter(<ForgotPassword />);
+
+    const button = screen.getByRole("button", {
+      name: /send Intructions/i,
+    });
+
+    expect(button).toBeInTheDocument();
+    expect(screen.getByLabelText("icon-send")).toBeInTheDocument();
+  });
 });
