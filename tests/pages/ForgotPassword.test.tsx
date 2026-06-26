@@ -1,10 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ForgotPassword from "@/pages/forgotPassword";
 import { renderWithRouter } from "../utils/renderWithRouter";
 
 let mockLocationSearch = "";
+const mockNavigate = vi.fn();
 
 vi.mock("react-router-dom", async () => {
   const actual =
@@ -14,6 +15,7 @@ vi.mock("react-router-dom", async () => {
 
   return {
     ...actual,
+    useNavigate: () => mockNavigate,
     useLocation: () => ({
       search: mockLocationSearch,
     }),
@@ -56,5 +58,28 @@ describe("RENDER", () => {
 
     expect(button).toBeInTheDocument();
     expect(screen.getByLabelText("icon-send")).toBeInTheDocument();
+  });
+
+  it("should render back to login button", () => {
+    renderWithRouter(<ForgotPassword />);
+
+    const button = screen.getByRole("button", {
+      name: /back to login/i,
+    });
+
+    expect(button).toBeInTheDocument();
+  });
+});
+
+describe("BEHAVIOR BUTTON", () => {
+  it("should navigate to login page when back button is clicked", async () => {
+    renderWithRouter(<ForgotPassword />);
+
+    const button = screen.getByRole("button", {
+      name: /back to login/i,
+    });
+
+    await userEvent.click(button);
+    expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 });
