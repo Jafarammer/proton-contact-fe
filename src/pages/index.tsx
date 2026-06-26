@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Card, Flex, Form, Input, Button, Divider } from "antd";
+import { BiSolidUserRectangle } from "react-icons/bi";
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { IoShieldCheckmark } from "react-icons/io5";
@@ -16,6 +17,9 @@ type FieldType = {
 const Register = () => {
   return (
     <div className="register-container">
+      <div className="logo">
+        <BiSolidUserRectangle className="icon" />
+      </div>
       <Title level={3} className="title">
         Proton Contact
       </Title>
@@ -108,7 +112,13 @@ const Register = () => {
               />
             </Form.Item>
 
-            <Button htmlType="submit" block type="primary" size="large">
+            <Button
+              htmlType="submit"
+              block
+              type="primary"
+              size="large"
+              className="btn-register"
+            >
               Register
             </Button>
           </Form>

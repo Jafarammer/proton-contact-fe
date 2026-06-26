@@ -66,7 +66,7 @@ const Login = () => {
               block
               type="primary"
               size="large"
-              icon={<FaArrowRightToBracket aria-label="icon-arrow" />}
+              icon={<FaArrowRightToBracket size={16} aria-label="icon-arrow" />}
               iconPosition="end"
             >
               Sign In to Dashboard
