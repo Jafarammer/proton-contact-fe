@@ -37,4 +37,13 @@ describe("RENDER", () => {
     expect(screen.getByText(titleForm)).toBeInTheDocument();
     expect(screen.getByText(descForm)).toBeInTheDocument();
   });
+
+  it("should render email input", () => {
+    renderWithRouter(<ForgotPassword />);
+
+    const emailInput = screen.getByLabelText("Email Address");
+    expect(emailInput).toBeInTheDocument();
+    expect(emailInput).toHaveAttribute("name", "email");
+    expect(emailInput).toHaveAttribute("type", "email");
+  });
 });
